@@ -17,4 +17,10 @@
   --font-script: 'Sacramento', cursive;
 
   --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+
+  --color-confetti-a: #f7d3e1;
+  --color-confetti-b: #efe4f4;
+  --color-confetti-c: #fdeef3;
+  --color-confetti-d: #dc93b0;
+  --color-confetti-e: #f8f4ef;
 }

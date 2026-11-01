@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import styles from './YesCard.module.css'
 
 const HEART_PATH = 'M12.2 20.8C5.5 15.4 2.2 11.6 2.4 7.6 2.5 4.6 4.7 3 7.1 3.1c2.1.1 3.9 1.3 5 3.3 1.1-2.1 3.1-3.3 5.1-3.3 2.6 0 4.6 1.7 4.5 4.6-.1 4-3.6 7.6-9.5 13.1Z'
-const CONFETTI_COLORS = ['#f7c8d8', '#d9c3f0', '#fbdbe8', '#dc93b0', '#fff']
+const CONFETTI_COLORS = ['var(--color-confetti-a)', 'var(--color-confetti-b)', 'var(--color-confetti-c)', 'var(--color-confetti-d)', 'var(--color-confetti-e)']
 
 interface ConfettiPiece {
   id: number
@@ -85,7 +85,7 @@ export default function YesCard({ firstName, venues }: Props) {
 
   function messageAshley() {
     const text = encodeURIComponent(`Hi Ashley, it is ${firstName}. YES, I would love to be your bridesmaid!`)
-    window.open(`https://wa.me/?text=${text}`, '_blank')
+    window.open(`https://wa.me/60139321767?text=${text}`, '_blank')
   }
 
   return (
@@ -98,13 +98,15 @@ export default function YesCard({ firstName, venues }: Props) {
             position: 'fixed',
             zIndex: 30,
             pointerEvents: 'none',
-            top: fall ? '110%' : '-5%',
-            left: `${c.l + (fall ? c.x : 0)}%`,
+            left: `${c.l}%`,
+            top: 0,
             width: c.w,
             height: c.w * 1.6,
             background: c.c,
-            transform: `rotate(${fall ? c.r : 0}deg)`,
-            transition: `top ${c.d}s ease-in ${c.dl}s, left ${c.d}s ${c.dl}s, transform ${c.d}s ${c.dl}s`,
+            transform: fall
+              ? `translateY(115vh) translateX(${c.x}vw) rotate(${c.r}deg)`
+              : `translateY(-8vh) rotate(0deg)`,
+            transition: `transform ${c.d}s ease-in ${c.dl}s`,
           }}
           aria-hidden="true"
         />
@@ -124,7 +126,7 @@ export default function YesCard({ firstName, venues }: Props) {
         </h2>
 
         <p className={styles.saveDate}>
-          I love you. Save the date, more details to follow very soon.
+          Save the date, more details to follow very soon.
         </p>
 
         <div className={styles.venueSection}>
@@ -148,7 +150,6 @@ export default function YesCard({ firstName, venues }: Props) {
           </button>
         </div>
 
-        <div className={styles.signoff}>Ashley</div>
       </div>
     </>
   )

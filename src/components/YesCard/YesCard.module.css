@@ -27,7 +27,7 @@
 .headline {
   font-family: var(--font-body);
   font-weight: 600;
-  font-size: clamp(30px, 7vw, 42px);
+  font-size: clamp(20px, 4.5vw, 28px);
   line-height: 1.15;
   color: var(--color-ink);
   text-wrap: balance;
@@ -53,10 +53,9 @@
 }
 
 .dateRow {
-  font-size: 12px;
-  letter-spacing: 0.24em;
-  text-transform: uppercase;
-  color: var(--color-label);
+  font-weight: 700;
+  font-size: 17px;
+  color: var(--color-ink);
   padding-bottom: 16px;
 }
 
@@ -70,9 +69,7 @@
 }
 
 .venueLabel {
-  font-size: 11px;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
+  font-size: 13px;
   color: var(--color-label);
   text-align: left;
   flex-shrink: 0;
@@ -80,10 +77,12 @@
 
 .venueName {
   font-weight: 700;
-  font-size: 19px;
+  font-size: 17px;
   line-height: 1.3;
   color: var(--color-ink);
   text-align: right;
+  overflow-wrap: break-word;
+  min-width: 0;
 }
 
 /* Action buttons */

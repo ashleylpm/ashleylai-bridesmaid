@@ -30,57 +30,44 @@ interface Props {
   bridesmaid: BridesmaidConfig
   partnerName: string
   animated: boolean
-  settled: boolean
   noLabel: string
   onYes: () => void
 }
 
-export default function Letter({ bridesmaid, partnerName, animated, settled, noLabel, onYes }: Props) {
-  const [noDx, setNoDx] = useState<number | null>(null)
-  const [noDy, setNoDy] = useState<number | null>(null)
-  const noRef = useRef<HTMLButtonElement>(null)
-  const dodgeCount = useRef(0)
+export default function Letter({ bridesmaid, partnerName, animated, noLabel, onYes }: Props) {
+  const [nudge, setNudge] = useState({ x: 0, y: 0 })
+  const nudgeRef = useRef({ x: 0, y: 0 })
 
   const firstName = bridesmaid.name.split(' ')[0]
 
   const dodge = useCallback((e: React.MouseEvent | React.TouchEvent) => {
     e.preventDefault()
-    const go = () => {
-      setNoDx(24 + Math.random() * (window.innerWidth - 198))
-      setNoDy(24 + Math.random() * (window.innerHeight - 112))
+    const cur = nudgeRef.current
+    // Pick a random angle, but exclude a 90° arc around the current direction
+    // so it always moves meaningfully away from where it just was
+    const curAngle = Math.atan2(cur.y, cur.x)
+    const offset = (Math.PI / 2) + Math.random() * Math.PI  // 90°–270° away
+    const angle = curAngle + offset
+    const dist = 200 + Math.random() * 200
+    const next = {
+      x: Math.cos(angle) * dist,
+      y: Math.sin(angle) * (dist * 0.65),
     }
-    if (noDx === null && noRef.current) {
-      const r = noRef.current.getBoundingClientRect()
-      setNoDx(r.left)
-      setNoDy(r.top)
-      requestAnimationFrame(() => requestAnimationFrame(go))
-    } else {
-      go()
-    }
-    dodgeCount.current++
-  }, [noDx])
+    nudgeRef.current = next
+    setNudge(next)
+  }, [])
 
-  const noStyle: React.CSSProperties = noDx !== null
-    ? {
-        position: 'fixed',
-        left: noDx,
-        top: noDy!,
-        zIndex: 20,
-        transition: 'left 0.25s, top 0.25s',
-        background: '#f8f4ef',
-      }
-    : {}
-
-  const cardTransform = animated
-    ? (settled ? 'none' : 'translateY(0px) scale(1)')
-    : 'translateY(50px) scale(0.5)'
+  const noStyle: React.CSSProperties = {
+    transform: `translate(${nudge.x}px, ${nudge.y}px)`,
+    transition: 'transform 0.22s ease-out',
+  }
 
   return (
     <div
       className={styles.card}
       style={{
         opacity: animated ? 1 : 0,
-        transform: cardTransform,
+        transform: animated ? 'none' : 'translateY(40px) scale(0.97)',
       }}
     >
       {/* Decorative hearts */}
@@ -118,7 +105,7 @@ export default function Letter({ bridesmaid, partnerName, animated, settled, noL
 
       {/* Bridesmaid question */}
       <div className={styles.questionBlock}>
-        <div className={styles.questionLabel}>Will you be my</div>
+        <p className={styles.questionIntro}>will you be my</p>
         <div className={styles.questionScript}>bridesmaid?</div>
       </div>
 
@@ -129,7 +116,6 @@ export default function Letter({ bridesmaid, partnerName, animated, settled, noL
         </button>
         <div className={styles.noWrapper}>
           <button
-            ref={noRef}
             className={styles.noBtn}
             style={noStyle}
             onMouseEnter={dodge}

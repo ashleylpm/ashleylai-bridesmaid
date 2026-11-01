@@ -15,7 +15,7 @@ body {
   color: var(--color-ink);
   background: linear-gradient(160deg, var(--color-bg-from) 0%, var(--color-bg-mid) 60%, var(--color-bg-to) 100%);
   min-height: 100vh;
-  overflow-x: hidden;
+  overflow-x: clip;
   -webkit-font-smoothing: antialiased;
 }
 

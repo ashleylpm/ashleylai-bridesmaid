@@ -3,7 +3,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 56px 32px;
+  padding: 56px 32px 150px;
   position: relative;
   overflow: hidden;
   isolation: isolate;
@@ -24,4 +24,13 @@
   display: grid;
   width: 100%;
   place-items: center;
+}
+
+.layer {
+  grid-area: 1 / 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  will-change: opacity, transform;
 }

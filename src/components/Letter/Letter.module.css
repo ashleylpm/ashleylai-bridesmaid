@@ -4,7 +4,7 @@
   background: var(--color-card);
   border-radius: 28px;
   box-shadow: 0 24px 60px rgba(100, 70, 140, 0.18);
-  padding: clamp(36px, 7vw, 64px) clamp(28px, 6vw, 64px);
+  padding: clamp(52px, 10vw, 88px) clamp(28px, 6vw, 64px) clamp(72px, 12vw, 110px);
   max-width: 560px;
   width: 100%;
   box-sizing: border-box;
@@ -13,7 +13,7 @@
   align-items: center;
   text-align: center;
   gap: 34px;
-  transition: opacity 0.5s ease, transform 1.1s cubic-bezier(0.22, 1, 0.36, 1);
+  transition: opacity 0.95s var(--ease-out), transform 0.95s var(--ease-out);
 }
 
 .greeting {
@@ -73,13 +73,13 @@
   margin-top: 32px;
 }
 
-.questionLabel {
+.questionIntro {
   font-family: var(--font-body);
-  font-weight: 600;
-  font-size: clamp(18px, 4vw, 24px);
-  text-transform: uppercase;
-  letter-spacing: 0.18em;
-  color: var(--color-ink);
+  font-style: italic;
+  font-weight: 400;
+  font-size: clamp(15px, 3.5vw, 18px);
+  color: var(--color-muted);
+  margin-bottom: 4px;
 }
 
 .questionScript {

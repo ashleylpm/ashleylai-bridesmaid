@@ -66,7 +66,7 @@
   bottom: auto;
   transform-origin: top;
   filter: drop-shadow(0 5px 5px rgba(90, 50, 70, 0.32));
-  transition: transform 0.45s ease;
+  /* No transition — scroll drives this directly */
 }
 
 .flapInner {
@@ -80,7 +80,7 @@
 .seal {
   position: absolute;
   left: 50%;
-  top: 60%;
+  top: 50%;
   width: 64px;
   height: 64px;
   margin: -32px 0 0 -32px;
@@ -116,14 +116,66 @@
   filter: drop-shadow(0 1px 0 rgba(255, 255, 255, 0.35)) drop-shadow(0 -1px 0 rgba(110, 40, 70, 0.45));
 }
 
-.crumb {
+/* --- Seal burst effect — sits behind the seal (z-index 3), centered on seal position --- */
+.burst {
   position: absolute;
   left: 50%;
   top: 50%;
-  margin: -3px;
+  width: 0;
+  height: 0;
+  pointer-events: none;
+  z-index: 3;
+}
+
+.burstFlash {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 130px;
+  height: 130px;
   border-radius: 50%;
-  background: #d9809f;
-  transition: transform 0.45s cubic-bezier(0.2, 0.7, 0.4, 1), opacity 0.45s ease-in;
+  transform: translate(-50%, -50%) scale(0);
+  background: radial-gradient(circle, rgba(255,255,220,1) 0%, rgba(255,245,140,0.7) 35%, rgba(255,230,80,0.25) 60%, transparent 75%);
+  animation: sealFlash 0.7s cubic-bezier(0.15, 0.8, 0.3, 1) forwards;
+}
+
+.burstRay {
+  position: absolute;
+  bottom: 0;
+  left: -1.5px;
+  width: 3px;
+  height: 0;
+  background: linear-gradient(to top, rgba(255,255,200,1), rgba(255,248,150,0));
+  transform-origin: bottom center;
+  border-radius: 3px;
+  animation: sealRay 0.65s cubic-bezier(0.1, 0.8, 0.3, 1) forwards;
+}
+
+.burstSpark {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: rgba(255, 250, 180, 1);
+  box-shadow: 0 0 6px 3px rgba(255, 240, 100, 0.7);
+  animation: sealSpark 0.7s cubic-bezier(0.1, 0.7, 0.25, 1) forwards;
+}
+
+@keyframes sealFlash {
+  0%   { transform: translate(-50%, -50%) scale(0);   opacity: 1; }
+  35%  { transform: translate(-50%, -50%) scale(1);   opacity: 1; }
+  100% { transform: translate(-50%, -50%) scale(1.5); opacity: 0; }
+}
+
+@keyframes sealRay {
+  0%   { height: 0;    opacity: 1; }
+  50%  { height: 72px; opacity: 1; }
+  100% { height: 88px; opacity: 0; }
+}
+
+@keyframes sealSpark {
+  0%   { transform: translate(0, 0) scale(1.2); opacity: 1; }
+  100% { transform: var(--spark-end);           opacity: 0; }
 }
 
 /* Inner card that peeks out */
@@ -141,9 +193,7 @@
 }
 
 .tapHint {
-  font-size: 12px;
-  letter-spacing: 0.24em;
-  text-transform: uppercase;
+  font-size: 13px;
   color: var(--color-label);
   transition: opacity 0.3s;
 }
