@@ -1,0 +1,20 @@
+:root {
+  --color-bg-from: #fdeef3;
+  --color-bg-mid: #fae6ee;
+  --color-bg-to: #efe4f4;
+  --color-card: #f8f4ef;
+  --color-pink: #dc93b0;
+  --color-pink-fill: #f7d3e1;
+  --color-ink: #3b2d52;
+  --color-muted: #5b4a73;
+  --color-label: #7d6a98;
+  --color-border: #f6dde6;
+  --color-btn-text: #4a2c45;
+  --color-btn-border: #eea6c0;
+  --color-link: #dc93b0;
+
+  --font-body: 'Poppins', sans-serif;
+  --font-script: 'Sacramento', cursive;
+
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+}
