@@ -109,7 +109,7 @@ export default function Envelope({ name, flapProgress, onOpen }: Props) {
       </div>
 
       <div className={styles.tapHint} style={{ opacity: flapProgress < 0.05 ? 1 : 0 }}>
-        scroll to open
+        tap to open
       </div>
     </div>
   )

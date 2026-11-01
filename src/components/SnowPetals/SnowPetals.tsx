@@ -1,15 +1,15 @@
 import styles from './SnowPetals.module.css'
 
-const PETALS = Array.from({ length: 44 }, (_, i) => {
-  const s = 4 + (i * 7) % 8
+const PETALS = Array.from({ length: 25 }, (_, i) => {
+  const s = 5 + (i * 11) % 16
   return {
     id: i,
     left: (i * 29 + 3) % 100,
     size: s,
-    opacity: 0.55 + (i % 4) * 0.1,
-    blur: s > 8 ? 1.2 : 0.4,
-    duration: 9 + (i * 5) % 11,
-    delay: -((i * 1.7) % 18),
+    opacity: 0.7 + (i % 4) * 0.07,
+    blur: s > 14 ? 1.5 : s > 9 ? 0.5 : 0,
+    duration: 8 + (i * 5) % 12,
+    delay: -((i * 1.7) % 20),
   }
 })
 

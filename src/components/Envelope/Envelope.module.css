@@ -6,11 +6,19 @@
   gap: 36px;
   text-align: center;
   transition: opacity 0.8s ease 0.1s, transform 1s cubic-bezier(0.22, 1, 0.36, 1);
+  margin-top: -20vh;
+}
+
+@media (max-height: 700px) {
+  .wrapper {
+    margin-top: -8vh;
+    gap: 20px;
+  }
 }
 
 .forName {
   font-family: var(--font-script);
-  font-size: 44px;
+  font-size: clamp(32px, 10vw, 44px);
   color: var(--color-pink);
   line-height: 1;
   font-weight: 400;
@@ -18,7 +26,7 @@
 
 .envelope {
   position: relative;
-  width: min(320px, 80vw);
+  width: min(300px, 78vw);
   aspect-ratio: 3 / 2;
   cursor: pointer;
   filter: drop-shadow(0 20px 26px rgba(90, 50, 70, 0.28));

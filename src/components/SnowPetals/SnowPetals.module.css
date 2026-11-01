@@ -6,12 +6,20 @@
   overflow: hidden;
 }
 
+@keyframes snowFall {
+  0%   { transform: translate3d(0, -8vh, 0); }
+  25%  { transform: translate3d(18px, 28vh, 0); }
+  50%  { transform: translate3d(-14px, 55vh, 0); }
+  75%  { transform: translate3d(16px, 82vh, 0); }
+  100% { transform: translate3d(-6px, 110vh, 0); }
+}
+
 .petal {
   position: absolute;
   top: 0;
   border-radius: 50%;
-  background: rgba(220, 235, 255, 0.9);
-  box-shadow: 0 0 8px rgba(180, 210, 255, 0.8), 0 0 2px rgba(255, 255, 255, 1);
+  background: radial-gradient(circle at 35% 35%, rgba(255, 255, 255, 1) 0%, rgba(255, 248, 252, 0.9) 60%, rgba(255, 230, 242, 0.7) 100%);
+  box-shadow: 0 0 8px rgba(255, 255, 255, 0.95), 0 0 18px rgba(255, 220, 240, 0.5), inset 0 1px 3px rgba(255, 255, 255, 1);
   animation: snowFall linear infinite;
   will-change: transform;
 }

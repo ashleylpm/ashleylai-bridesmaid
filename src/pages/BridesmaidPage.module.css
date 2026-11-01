@@ -3,9 +3,9 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 56px 32px 150px;
+  padding: 100px 32px 120px;
   position: relative;
-  overflow: hidden;
+  overflow: clip;
   isolation: isolate;
   box-sizing: border-box;
 }

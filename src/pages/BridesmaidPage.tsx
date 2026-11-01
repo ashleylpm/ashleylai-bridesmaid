@@ -1,4 +1,4 @@
-import { useState, useEffect, useLayoutEffect, useRef } from 'react'
+import { useState, useLayoutEffect, useRef } from 'react'
 import { type BridesmaidConfig, config } from '../config'
 import Envelope from '../components/Envelope/Envelope'
 import Letter from '../components/Letter/Letter'
@@ -8,9 +8,6 @@ import styles from './BridesmaidPage.module.css'
 
 interface Props { bridesmaid: BridesmaidConfig }
 
-// Total scroll pixels for the full envelope→letter transition
-const SCROLL_RANGE = 500
-// Fraction of scroll range dedicated to opening the flap (rest slides the letter in)
 const FLAP_END = 0.5
 
 export default function BridesmaidPage({ bridesmaid }: Props) {
@@ -29,6 +26,7 @@ export default function BridesmaidPage({ bridesmaid }: Props) {
       const cardH = letterLayerRef.current.scrollHeight
       letterStartOffsetRef.current = window.innerHeight / 2 + cardH / 2 + 24
       letterLayerRef.current.style.transform = `translateY(${letterStartOffsetRef.current}px)`
+      letterLayerRef.current.style.opacity = '0'
       letterLayerRef.current.style.pointerEvents = 'none'
     }
   }, [])
@@ -55,37 +53,10 @@ export default function BridesmaidPage({ bridesmaid }: Props) {
       letterLayerRef.current.style.transform = lp >= 1
         ? 'none'
         : `translateY(${letterStartOffsetRef.current * (1 - lp)}px)`
+      letterLayerRef.current.style.opacity = String(Math.min(1, lp * 2))
       letterLayerRef.current.style.pointerEvents = lp >= 1 ? 'auto' : 'none'
     }
   }
-
-  useEffect(() => {
-    if (showYes) return
-    let touchStartY = 0
-
-    function applyDelta(delta: number) {
-      if (rafRef.current) { cancelAnimationFrame(rafRef.current); rafRef.current = null }
-      const clamped = Math.max(0, Math.min(SCROLL_RANGE, progressRef.current * SCROLL_RANGE + delta))
-      applyProgress(clamped / SCROLL_RANGE)
-    }
-
-    function onWheel(e: WheelEvent) { applyDelta(e.deltaY) }
-    function onTouchStart(e: TouchEvent) { touchStartY = e.touches[0].clientY }
-    function onTouchMove(e: TouchEvent) {
-      const dy = touchStartY - e.touches[0].clientY
-      touchStartY = e.touches[0].clientY
-      applyDelta(dy * 2)
-    }
-
-    window.addEventListener('wheel', onWheel, { passive: true })
-    window.addEventListener('touchstart', onTouchStart, { passive: true })
-    window.addEventListener('touchmove', onTouchMove, { passive: true })
-    return () => {
-      window.removeEventListener('wheel', onWheel)
-      window.removeEventListener('touchstart', onTouchStart)
-      window.removeEventListener('touchmove', onTouchMove)
-    }
-  }, [showYes])
 
   // Tap on envelope: flap opens over ~700ms, then letter slides in over ~2000ms
   function handleEnvelopeTap() {
@@ -93,7 +64,7 @@ export default function BridesmaidPage({ bridesmaid }: Props) {
     const start = progressRef.current
     const t0 = performance.now()
     const flapDur = 600
-    const letterDur = 1200
+    const letterDur = 700
 
     function animate(now: number) {
       const elapsed = now - t0
@@ -112,6 +83,7 @@ export default function BridesmaidPage({ bridesmaid }: Props) {
         rafRef.current = requestAnimationFrame(animate)
       } else {
         rafRef.current = null
+        document.body.style.overflow = 'auto'
       }
     }
     rafRef.current = requestAnimationFrame(animate)

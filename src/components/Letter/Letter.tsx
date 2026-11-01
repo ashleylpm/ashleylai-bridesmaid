@@ -35,31 +35,29 @@ interface Props {
 }
 
 export default function Letter({ bridesmaid, partnerName, animated, noLabel, onYes }: Props) {
-  const [nudge, setNudge] = useState({ x: 0, y: 0 })
-  const nudgeRef = useRef({ x: 0, y: 0 })
+  const [noOffset, setNoOffset] = useState({ x: 0, y: 0 })
+  const noOffsetRef = useRef({ x: 0, y: 0 })
+  const noRef = useRef<HTMLButtonElement>(null)
 
   const firstName = bridesmaid.name.split(' ')[0]
 
   const dodge = useCallback((e: React.MouseEvent | React.TouchEvent) => {
     e.preventDefault()
-    const cur = nudgeRef.current
-    // Pick a random angle, but exclude a 90° arc around the current direction
-    // so it always moves meaningfully away from where it just was
-    const curAngle = Math.atan2(cur.y, cur.x)
-    const offset = (Math.PI / 2) + Math.random() * Math.PI  // 90°–270° away
-    const angle = curAngle + offset
-    const dist = 200 + Math.random() * 200
-    const next = {
-      x: Math.cos(angle) * dist,
-      y: Math.sin(angle) * (dist * 0.65),
-    }
-    nudgeRef.current = next
-    setNudge(next)
+    if (!noRef.current) return
+    const rect = noRef.current.getBoundingClientRect()
+    const margin = 20
+    const angle = Math.random() * Math.PI * 2
+    const dist = 140 + Math.random() * 160
+    const cur = noOffsetRef.current
+    const nx = Math.max(margin - rect.left + cur.x, Math.min(window.innerWidth - rect.right + cur.x - margin, cur.x + Math.cos(angle) * dist))
+    const ny = Math.max(margin - rect.top + cur.y, Math.min(window.innerHeight - rect.bottom + cur.y - margin, cur.y + Math.sin(angle) * dist * 0.75))
+    noOffsetRef.current = { x: nx, y: ny }
+    setNoOffset({ x: nx, y: ny })
   }, [])
 
   const noStyle: React.CSSProperties = {
-    transform: `translate(${nudge.x}px, ${nudge.y}px)`,
-    transition: 'transform 0.22s ease-out',
+    transform: `translate(${noOffset.x}px, ${noOffset.y}px)`,
+    transition: 'transform 0.28s cubic-bezier(0.22,1,0.36,1)',
   }
 
   return (
@@ -79,13 +77,13 @@ export default function Letter({ bridesmaid, partnerName, animated, noLabel, onY
       {/* Greeting */}
       <div className={styles.greeting}>Dear {firstName},</div>
 
-      {/* Personal intro */}
-      <p className={styles.body}>{bridesmaid.intro}</p>
-
       {/* Fixed wedding line */}
       <p className={styles.body}>
         {partnerName} and I are getting married on 1 May 2027, and would love to have you beside me.
       </p>
+
+      {/* Personal intro */}
+      <p className={styles.body}>{bridesmaid.intro}</p>
 
       {/* Polaroid photos */}
       <div className={styles.photos}>
@@ -116,6 +114,7 @@ export default function Letter({ bridesmaid, partnerName, animated, noLabel, onY
         </button>
         <div className={styles.noWrapper}>
           <button
+            ref={noRef}
             className={styles.noBtn}
             style={noStyle}
             onMouseEnter={dodge}
