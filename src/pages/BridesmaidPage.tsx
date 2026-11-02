@@ -83,7 +83,6 @@ export default function BridesmaidPage({ bridesmaid }: Props) {
         rafRef.current = requestAnimationFrame(animate)
       } else {
         rafRef.current = null
-        document.body.style.overflow = 'auto'
       }
     }
     rafRef.current = requestAnimationFrame(animate)
