@@ -16,6 +16,13 @@
   }
 }
 
+@media (max-width: 600px) {
+  .wrapper {
+    margin-top: 0;
+    gap: 24px;
+  }
+}
+
 .forName {
   font-family: var(--font-script);
   font-size: clamp(32px, 10vw, 44px);

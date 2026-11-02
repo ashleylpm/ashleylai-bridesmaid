@@ -10,6 +10,13 @@
   box-sizing: border-box;
 }
 
+@media (max-width: 600px) {
+  .root {
+    padding: 24px 20px;
+    align-items: center;
+  }
+}
+
 .center {
   display: grid;
   place-items: center;
