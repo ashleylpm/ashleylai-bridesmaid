@@ -142,10 +142,3 @@
   outline: 2px solid var(--color-pink);
   outline-offset: 3px;
 }
-
-.signoff {
-  font-family: var(--font-script);
-  font-size: 30px;
-  color: var(--color-pink);
-  font-weight: 400;
-}
