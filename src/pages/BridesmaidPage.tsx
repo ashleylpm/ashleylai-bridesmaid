@@ -20,7 +20,6 @@ export default function BridesmaidPage({ bridesmaid }: Props) {
   const envelopeLayerRef = useRef<HTMLDivElement>(null)
   const letterLayerRef = useRef<HTMLDivElement>(null)
   const letterStartOffsetRef = useRef(0)
-  const firstName = bridesmaid.name.split(' ')[0]
 
   useEffect(() => {
     if (letterOpen) {
@@ -129,7 +128,7 @@ export default function BridesmaidPage({ bridesmaid }: Props) {
             </>
           )}
           {showYes && (
-            <YesCard firstName={firstName} venues={config.wedding.venues} />
+            <YesCard venues={config.wedding.venues} />
           )}
         </div>
       </div>

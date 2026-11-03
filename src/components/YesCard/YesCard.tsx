@@ -38,11 +38,10 @@ function Heart({ style, filled }: HeartProps) {
 }
 
 interface Props {
-  firstName: string
   venues: { morning: string; night: string }
 }
 
-export default function YesCard({ firstName, venues }: Props) {
+export default function YesCard({ venues }: Props) {
   const [confetti, setConfetti] = useState<ConfettiPiece[]>([])
   const [fall, setFall] = useState(false)
 
