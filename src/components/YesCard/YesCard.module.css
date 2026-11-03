@@ -83,6 +83,28 @@
   text-align: right;
   overflow-wrap: break-word;
   min-width: 0;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 6px;
+}
+
+.mapLink {
+  color: var(--color-label);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  border: 1.5px solid var(--color-border);
+  transition: color 0.2s, border-color 0.2s;
+}
+
+.mapLink:hover {
+  color: var(--color-ink);
+  border-color: var(--color-ink);
 }
 
 /* Action buttons */

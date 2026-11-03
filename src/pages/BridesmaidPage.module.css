@@ -12,8 +12,19 @@
 
 @media (max-width: 600px) {
   .root {
+    height: 100dvh;
+    min-height: unset;
+    overflow: hidden;
     padding: 60px 20px;
     align-items: center;
+  }
+  .rootOpen {
+    height: auto;
+    min-height: 100dvh;
+    overflow: visible;
+    align-items: flex-start;
+    padding-top: 56px;
+    padding-bottom: 90px;
   }
 }
 

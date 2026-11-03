@@ -15,7 +15,9 @@ export interface Config {
     partner: string
     venues: {
       morning: string
+      morningLink?: string
       night: string
+      nightLink?: string
     }
   }
   bridesmaids: Record<string, BridesmaidConfig>
@@ -28,8 +30,10 @@ export const config: Config = {
   wedding: {
     partner: 'Julian Chong',
     venues: {
-      morning: 'DUMC, Dream Center',
+      morning: 'DUMC Dream Center',
+      morningLink: 'https://share.google/Fhpo704XSz7gbTodQ',
       night: 'Copper Mansion, PJ',
+      nightLink: 'https://share.google/jew1XfurYSMYt3i6A',
     },
   },
 
@@ -37,7 +41,7 @@ export const config: Config = {
     annabel: {
       name: 'Annabel Tee',
       slug: 'annabel',
-      intro: "I miss you so much. Thank you for always being so real with me — I honestly don't know how we ended up this close, but I love you.",
+      intro: "I miss you so much. Thank you for always being so real with me, honestly don't know how we ended up this close, but our friendship means alot to me. Here's to more Yo-Chi, Mat .",
       galleryPhotos: [
         { src: '/photos/annabel/1.jpg', alt: 'A favourite memory' },
         { src: '/photos/annabel/2.jpg', alt: 'Together' },
@@ -59,7 +63,7 @@ export const config: Config = {
     chelsea: {
       name: 'Chelsea Yeo',
       slug: 'chelsea',
-      intro: 'Thank you for always saying yes. 5 peas in a pod forever.',
+      intro: 'Yayy thank you for saying yes, despite being a soon-to-be-momma. 6 peas in a pod rep hehe yay.',
       galleryPhotos: [
         { src: '/photos/chelsea/1.jpg', alt: 'A favourite memory' },
         { src: '/photos/chelsea/2.jpg', alt: 'Together' },
@@ -70,7 +74,7 @@ export const config: Config = {
     alison: {
       name: 'Alison Lau',
       slug: 'alison',
-      intro: "Here's to more fun and food adventures ahead.",
+      intro: "Thank you for always being my partner in crime with me. Here's to more fun and food adventures ahead. Where to next hehe?",
       galleryPhotos: [
         { src: '/photos/alison/1.jpg', alt: 'A favourite memory' },
         { src: '/photos/alison/2.jpg', alt: 'Together' },

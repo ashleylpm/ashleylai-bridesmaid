@@ -20,10 +20,12 @@ export default function BridesmaidPage({ bridesmaid }: Props) {
   const envelopeLayerRef = useRef<HTMLDivElement>(null)
   const letterLayerRef = useRef<HTMLDivElement>(null)
   const letterStartOffsetRef = useRef(0)
+  const letterEndOffsetRef = useRef(0)
 
   useEffect(() => {
     if (letterOpen) {
       document.body.style.overflowY = 'auto'
+      window.scrollTo({ top: 0 })
     }
     return () => {
       document.body.style.overflowY = ''
@@ -33,12 +35,26 @@ export default function BridesmaidPage({ bridesmaid }: Props) {
   useLayoutEffect(() => {
     if (letterLayerRef.current) {
       const cardH = letterLayerRef.current.scrollHeight
-      letterStartOffsetRef.current = window.innerHeight / 2 + cardH / 2 + 24
-      letterLayerRef.current.style.transform = `translateY(${letterStartOffsetRef.current}px)`
+      const start = window.innerHeight / 2 + cardH / 2 + 24
+      letterStartOffsetRef.current = start
+      // On mobile the grid is taller than the viewport, so the letter's natural top sits above
+      // the viewport. Animate to a translateY that lands the letter's top at 24px (rootOpen
+      // padding-top) instead of at the invisible-above-viewport natural position.
+      // 56 = rootOpen padding-top on mobile. Formula lands letter top at that y-coordinate.
+      letterEndOffsetRef.current = window.innerWidth <= 600 ? start - window.innerHeight + 56 - 24 : 0
+      letterLayerRef.current.style.transform = `translateY(${start}px)`
       letterLayerRef.current.style.opacity = '0'
       letterLayerRef.current.style.pointerEvents = 'none'
     }
   }, [])
+
+  // After rootOpen reflows the layout, reset transform before paint so there is no jump.
+  // On mobile the new natural top (24px via rootOpen padding) matches the animation endpoint.
+  useLayoutEffect(() => {
+    if (letterOpen && letterLayerRef.current) {
+      letterLayerRef.current.style.transform = 'none'
+    }
+  }, [letterOpen])
 
   function applyProgress(p: number) {
     progressRef.current = p
@@ -59,9 +75,9 @@ export default function BridesmaidPage({ bridesmaid }: Props) {
       envelopeLayerRef.current.style.pointerEvents = lp > 0.2 ? 'none' : 'auto'
     }
     if (letterLayerRef.current) {
-      letterLayerRef.current.style.transform = lp >= 1
-        ? 'none'
-        : `translateY(${letterStartOffsetRef.current * (1 - lp)}px)`
+      const end = letterEndOffsetRef.current
+      const translateY = letterStartOffsetRef.current + (end - letterStartOffsetRef.current) * lp
+      letterLayerRef.current.style.transform = `translateY(${translateY}px)`
       letterLayerRef.current.style.opacity = String(Math.min(1, lp * 2))
       letterLayerRef.current.style.pointerEvents = lp >= 1 ? 'auto' : 'none'
     }
