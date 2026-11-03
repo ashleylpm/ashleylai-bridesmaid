@@ -84,7 +84,7 @@ export default function YesCard({ firstName, venues }: Props) {
   }
 
   function messageAshley() {
-    const text = encodeURIComponent(`Hi Ashley, it is ${firstName}. YES, I would love to be your bridesmaid!`)
+    const text = encodeURIComponent(`YES! I would love to be your bridesmaid!`)
     window.open(`https://wa.me/60139321767?text=${text}`, '_blank')
   }
 
@@ -122,7 +122,7 @@ export default function YesCard({ firstName, venues }: Props) {
         <div className={styles.thankYou}>Thank you!</div>
 
         <h2 className={styles.headline}>
-          You just made me the happiest bride-to-be, {firstName}.
+          You just made me the happiest bride-to-be.
         </h2>
 
         <p className={styles.saveDate}>

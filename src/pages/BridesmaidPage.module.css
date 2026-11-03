@@ -17,6 +17,10 @@
   }
 }
 
+.rootOpen {
+  overflow: visible;
+}
+
 .center {
   display: grid;
   place-items: center;

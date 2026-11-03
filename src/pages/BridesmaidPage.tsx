@@ -1,4 +1,4 @@
-import { useState, useLayoutEffect, useRef } from 'react'
+import { useState, useLayoutEffect, useRef, useEffect } from 'react'
 import { type BridesmaidConfig, config } from '../config'
 import Envelope from '../components/Envelope/Envelope'
 import Letter from '../components/Letter/Letter'
@@ -13,6 +13,7 @@ const FLAP_END = 0.5
 export default function BridesmaidPage({ bridesmaid }: Props) {
   const [showYes, setShowYes] = useState(false)
   const [flapProgress, setFlapProgress] = useState(0)
+  const [letterOpen, setLetterOpen] = useState(false)
   const progressRef = useRef(0)
   const flapProgressRef = useRef(0)
   const rafRef = useRef<number | null>(null)
@@ -20,6 +21,15 @@ export default function BridesmaidPage({ bridesmaid }: Props) {
   const letterLayerRef = useRef<HTMLDivElement>(null)
   const letterStartOffsetRef = useRef(0)
   const firstName = bridesmaid.name.split(' ')[0]
+
+  useEffect(() => {
+    if (letterOpen) {
+      document.body.style.overflowY = 'auto'
+    }
+    return () => {
+      document.body.style.overflowY = ''
+    }
+  }, [letterOpen])
 
   useLayoutEffect(() => {
     if (letterLayerRef.current) {
@@ -83,6 +93,7 @@ export default function BridesmaidPage({ bridesmaid }: Props) {
         rafRef.current = requestAnimationFrame(animate)
       } else {
         rafRef.current = null
+        setLetterOpen(true)
       }
     }
     rafRef.current = requestAnimationFrame(animate)
@@ -93,7 +104,7 @@ export default function BridesmaidPage({ bridesmaid }: Props) {
   }
 
   return (
-    <main id="main-content" className={styles.root}>
+    <main id="main-content" className={`${styles.root}${letterOpen ? ` ${styles.rootOpen}` : ''}`}>
       <SnowPetals />
       <div className={styles.center}>
         <div className={styles.grid}>

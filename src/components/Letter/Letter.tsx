@@ -103,7 +103,7 @@ export default function Letter({ bridesmaid, partnerName, animated, noLabel, onY
 
       {/* Bridesmaid question */}
       <div className={styles.questionBlock}>
-        <p className={styles.questionIntro}>will you be my</p>
+        <p className={styles.questionIntro}>WILL YOU BE MY</p>
         <div className={styles.questionScript}>bridesmaid?</div>
       </div>
 
