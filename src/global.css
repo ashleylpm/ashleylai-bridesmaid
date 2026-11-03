@@ -56,9 +56,9 @@ a:hover {
 }
 
 @keyframes confetti-pop {
-  0%   { transform: scale(0) rotate(-6deg); opacity: 0; }
-  60%  { transform: scale(1.06) rotate(1deg); opacity: 1; }
-  100% { transform: scale(1) rotate(0deg); opacity: 1; }
+  0%   { opacity: 0; transform: translateY(28px); }
+  60%  { opacity: 1; }
+  100% { opacity: 1; transform: translateY(0); }
 }
 
 @media (prefers-reduced-motion: reduce) {

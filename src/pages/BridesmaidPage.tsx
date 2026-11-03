@@ -115,6 +115,7 @@ export default function BridesmaidPage({ bridesmaid }: Props) {
   }
 
   function handleYes() {
+    window.scrollTo({ top: 0 })
     setShowYes(true)
   }
 
