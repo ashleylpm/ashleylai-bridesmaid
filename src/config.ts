@@ -41,7 +41,7 @@ export const config: Config = {
     annabel: {
       name: 'Annabel Tee',
       slug: 'annabel',
-      intro: "I miss you so much. Thank you for always being so real with me, honestly don't know how we ended up this close, but our friendship means alot to me. Here's to more Yo-Chi, Mat .",
+      intro: "Thank you for always being so real with me, honestly don't know how we ended up this close, but our friendship means alot to me. Constantly missing you so much. Here's to more sleepovers, yo-chi and Japan trips together.",
       galleryPhotos: [
         { src: '/photos/annabel/1.jpg', alt: 'A favourite memory' },
         { src: '/photos/annabel/2.jpg', alt: 'Together' },
