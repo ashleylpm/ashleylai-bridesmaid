@@ -5,7 +5,7 @@ export default function NotFound() {
     <main className={styles.page}>
       <div className={styles.content}>
         <span className={styles.flower} aria-hidden="true">🌸</span>
-        <h1 className={styles.heading}>You need a link from Ashley</h1>
+        <h1 className={styles.heading}>You need a link from Ashley Lai</h1>
         <p className={styles.body}>
           This invitation is personal — check your messages for your own special link.
         </p>

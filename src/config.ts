@@ -52,7 +52,7 @@ export const config: Config = {
     lauren: {
       name: 'Lauren Lai',
       slug: 'lauren',
-      intro: 'Thank you for being my only big sister, hehe love ya.',
+      intro: 'Thank you for being my only big sister and fetching me to MRT and cleaning the toilet lol, hehe love ya.',
       galleryPhotos: [
         { src: '/photos/lauren/1.jpg', alt: 'A favourite memory' },
         { src: '/photos/lauren/2.jpg', alt: 'Together' },
@@ -63,7 +63,7 @@ export const config: Config = {
     chelsea: {
       name: 'Chelsea Yeo',
       slug: 'chelsea',
-      intro: 'Yayy thank you for saying yes, despite being a soon-to-be-momma. 6 peas in a pod rep hehe yay.',
+      intro: 'Yayy thank you for saying yes, despite being a soon-to-be-momma. Exciting chapters ahead for the both of us! 6 peas in a pod rep hehe.',
       galleryPhotos: [
         { src: '/photos/chelsea/1.jpg', alt: 'A favourite memory' },
         { src: '/photos/chelsea/2.jpg', alt: 'Together' },
@@ -74,7 +74,7 @@ export const config: Config = {
     alison: {
       name: 'Alison Lau',
       slug: 'alison',
-      intro: "Thank you for always being my partner in crime with me. Here's to more fun and food adventures ahead. Where to next hehe?",
+      intro: "Thank you for always being my partner in crime and playing along with my stupidness lols. Here's to more fun and food adventures ahead, where to next hehe?",
       galleryPhotos: [
         { src: '/photos/alison/1.jpg', alt: 'A favourite memory' },
         { src: '/photos/alison/2.jpg', alt: 'Together' },

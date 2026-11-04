@@ -91,6 +91,13 @@
   font-weight: 400;
 }
 
+.buttonHint {
+  font-size: 11px;
+  color: var(--color-label);
+  opacity: 0.7;
+  margin: 0;
+}
+
 /* YES / NO buttons */
 .buttonRow {
   display: flex;
