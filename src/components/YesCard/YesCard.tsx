@@ -16,24 +16,30 @@ interface ConfettiPiece {
 }
 
 interface HeartProps {
-  style: React.CSSProperties
+  left?: number; right?: number; top?: number; bottom?: number
+  size: number
   filled?: boolean
+  delay?: number
+  rotate?: string
 }
 
-function Heart({ style, filled }: HeartProps) {
+function Heart({ left, right, top, bottom, size, filled, delay = 0, rotate = 'rotate(0deg)' }: HeartProps) {
   return (
-    <svg
-      viewBox="0 0 24 24"
-      style={{ position: 'absolute', pointerEvents: 'none', ...style }}
-      fill={filled ? '#f7d3e1' : 'none'}
-      stroke="#dc93b0"
-      strokeWidth="1.4"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      aria-hidden="true"
-    >
-      <path d={HEART_PATH} />
-    </svg>
+    <div style={{ position: 'absolute', pointerEvents: 'none', left, right, top, bottom, width: size, height: size, transform: rotate }}>
+      <svg
+        viewBox="0 0 24 24"
+        className="heart-pulse"
+        style={{ width: '100%', height: '100%', animationDelay: `${delay}s` }}
+        fill={filled ? '#f7d3e1' : 'none'}
+        stroke="#dc93b0"
+        strokeWidth="1.4"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        aria-hidden="true"
+      >
+        <path d={HEART_PATH} />
+      </svg>
+    </div>
   )
 }
 
@@ -113,10 +119,10 @@ export default function YesCard({ venues }: Props) {
 
       <div className={styles.card} role="status" aria-live="polite">
         {/* Decorative hearts */}
-        <Heart style={{ left: -14, top: -16, width: 34, height: 34, transform: 'rotate(-18deg)' }} />
-        <Heart style={{ right: 18, top: 24, width: 22, height: 22, transform: 'rotate(14deg)' }} filled />
-        <Heart style={{ right: -12, bottom: 90, width: 28, height: 28, transform: 'rotate(22deg)' }} />
-        <Heart style={{ left: 16, bottom: 150, width: 20, height: 20, transform: 'rotate(-10deg)' }} filled />
+        <Heart left={-14} top={-16} size={34} rotate="rotate(-18deg)" delay={0} />
+        <Heart right={18} top={24} size={22} rotate="rotate(14deg)" delay={0.7} filled />
+        <Heart right={-12} bottom={90} size={28} rotate="rotate(22deg)" delay={1.4} />
+        <Heart left={16} bottom={150} size={20} rotate="rotate(-10deg)" delay={2.1} filled />
 
         <div className={styles.thankYou}>Thank you!</div>
 

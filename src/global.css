@@ -55,6 +55,16 @@ a:hover {
   top: 1rem;
 }
 
+@keyframes heart-pulse {
+  0%, 100% { transform: scale(1); }
+  50%       { transform: scale(1.22); }
+}
+
+.heart-pulse {
+  display: block;
+  animation: heart-pulse 2s ease-in-out infinite;
+}
+
 @keyframes confetti-pop {
   0%   { opacity: 0; transform: translateY(28px); }
   60%  { opacity: 1; }
