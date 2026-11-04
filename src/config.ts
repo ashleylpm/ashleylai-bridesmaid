@@ -41,7 +41,7 @@ export const config: Config = {
     annabel: {
       name: 'Annabel Tee',
       slug: 'annabel',
-      intro: "Thank you for always being so real with me, honestly don't know how we ended up this close, but our friendship means alot to me. Constantly missing you so much. Here's to more sleepovers, yo-chi and Japan trips together.",
+      intro: "Thank you for always being so real with me, you\'re someone i really respect and can always count on, honestly don't know how we ended up this close, but our (low maintenance) friendship means alot to me. Constantly missing you soo much. More impromptu video calls and here's to more sleepovers, yo-chi and Japan trips together. With that being said...",
       galleryPhotos: [
         { src: '/photos/annabel/1.jpg', alt: 'A favourite memory' },
         { src: '/photos/annabel/2.jpg', alt: 'Together' },
@@ -52,7 +52,7 @@ export const config: Config = {
     lauren: {
       name: 'Lauren Lai',
       slug: 'lauren',
-      intro: 'Thank you for being my only big sister and fetching me to MRT and cleaning the toilet lol, hehe love ya.',
+      intro: 'Thank you for being my only big sister and fetching me to MRT and cleaning the toilet lol. yay to room alone but missing the times that i can just randomly tell u stuff when i come home now i need to msg you, hehe love ya. With that being said...',
       galleryPhotos: [
         { src: '/photos/lauren/1.jpg', alt: 'A favourite memory' },
         { src: '/photos/lauren/2.jpg', alt: 'Together' },
@@ -63,7 +63,7 @@ export const config: Config = {
     chelsea: {
       name: 'Chelsea Yeo',
       slug: 'chelsea',
-      intro: 'Yayy thank you for saying yes, despite being a soon-to-be-momma. Exciting chapters ahead for the both of us! 6 peas in a pod rep hehe.',
+      intro: 'hello 6 peas in a pod rep hehe. wow wow cant believe how long our friendship has been, and now you gonna be a momma-to-be. Exciting chapters ahead for the both of us! Appreciate our friendship and thank you for being so kind and never fail to show that you care for me. Love ya lots. With that being said...',
       galleryPhotos: [
         { src: '/photos/chelsea/1.jpg', alt: 'A favourite memory' },
         { src: '/photos/chelsea/2.jpg', alt: 'Together' },
@@ -74,7 +74,7 @@ export const config: Config = {
     alison: {
       name: 'Alison Lau',
       slug: 'alison',
-      intro: "Thank you for always being my partner in crime and playing along with my stupidness lols. Here's to more fun and food adventures ahead, where to next hehe?",
+      intro: "Thank you for always being my partner in crime and playing along with my stupidness lols. Love our low maintenance friednship even tho we dont talk for ages but when we meetup again we can yap non-stop. Here's to more fun and food adventures ahead, where to next hehe? With that being said...",
       galleryPhotos: [
         { src: '/photos/alison/1.jpg', alt: 'A favourite memory' },
         { src: '/photos/alison/2.jpg', alt: 'Together' },
