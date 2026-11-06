@@ -35,16 +35,16 @@
 /* Polaroid photos */
 .photos {
   display: flex;
-  gap: 12px;
+  gap: 16px;
   width: 100%;
-  max-width: 440px;
+  max-width: 520px;
   margin: 24px 0;
 }
 
 .polaroid {
   flex: 1;
   background: #f8f4ef;
-  padding: 7px 7px 26px;
+  padding: 6px;
   box-shadow: 0 6px 14px rgba(100, 70, 140, 0.2);
 }
 
