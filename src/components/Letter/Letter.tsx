@@ -101,7 +101,7 @@ export default function Letter({ bridesmaid, partnerName, animated, noLabel, onY
               className={styles.polaroid}
               style={{ transform: `rotate(${rotations[i]}deg)` }}
             >
-              <PhotoWithFallback src={photo.src} alt={photo.alt} initial={firstName[0]} />
+              <PhotoWithFallback src={photo.src} alt="" initial={firstName[0]} />
             </div>
           )
         })}

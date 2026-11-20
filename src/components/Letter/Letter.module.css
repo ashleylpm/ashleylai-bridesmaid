@@ -55,6 +55,17 @@
   display: block;
 }
 
+@media (max-width: 600px) {
+  .photos {
+    gap: 8px;
+    max-width: none;
+    width: calc(100% + 2 * (20px + clamp(28px, 6vw, 64px)));
+    margin: 16px calc(-1 * (20px + clamp(28px, 6vw, 64px)));
+    padding: 0 12px;
+    box-sizing: border-box;
+  }
+}
+
 .photoPlaceholder {
   width: 100%;
   aspect-ratio: 1 / 1;

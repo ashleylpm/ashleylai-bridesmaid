@@ -30,9 +30,9 @@ export const config: Config = {
   wedding: {
     partner: 'Julian Chong',
     venues: {
-      morning: 'DUMC Dream Center',
+      morning: 'DUMC Dream Centre',
       morningLink: 'https://share.google/Fhpo704XSz7gbTodQ',
-      night: 'Copper Mansion, PJ',
+      night: 'Copper Mansion Signature',
       nightLink: 'https://share.google/jew1XfurYSMYt3i6A',
     },
   },
