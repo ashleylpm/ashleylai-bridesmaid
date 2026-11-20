@@ -119,6 +119,30 @@
 
 .calBtn {
   font-family: var(--font-body);
+  font-weight: 500;
+  font-size: 13px;
+  letter-spacing: 0.03em;
+  background: transparent;
+  color: var(--color-muted);
+  border: 1px solid var(--color-btn-border);
+  border-radius: 999px;
+  padding: 0 18px;
+  height: 40px;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.calBtn:hover {
+  background: #fdeef3;
+}
+
+.calBtn:focus-visible {
+  outline: 2px solid var(--color-pink);
+  outline-offset: 3px;
+}
+
+.waBtn {
+  font-family: var(--font-body);
   font-weight: 600;
   font-size: 13px;
   letter-spacing: 0.03em;
@@ -133,32 +157,8 @@
   transition: transform 0.15s;
 }
 
-.calBtn:hover {
-  transform: translateY(-2px);
-}
-
-.calBtn:focus-visible {
-  outline: 2px solid var(--color-pink);
-  outline-offset: 3px;
-}
-
-.waBtn {
-  font-family: var(--font-body);
-  font-weight: 500;
-  font-size: 13px;
-  letter-spacing: 0.03em;
-  background: transparent;
-  color: var(--color-muted);
-  border: 1px solid var(--color-btn-border);
-  border-radius: 999px;
-  padding: 0 18px;
-  height: 40px;
-  cursor: pointer;
-  transition: background 0.15s;
-}
-
 .waBtn:hover {
-  background: #fdeef3;
+  transform: translateY(-2px);
 }
 
 .waBtn:focus-visible {
