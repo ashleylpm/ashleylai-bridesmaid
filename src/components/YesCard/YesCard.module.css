@@ -34,6 +34,12 @@
   text-wrap: balance;
 }
 
+.couple {
+  width: 100%;
+  max-width: 320px;
+  height: auto;
+}
+
 .saveDate {
   font-size: 16px;
   line-height: 1.6;

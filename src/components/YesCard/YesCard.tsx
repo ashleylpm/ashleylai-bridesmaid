@@ -130,6 +130,12 @@ export default function YesCard({ venues }: Props) {
           You just made me the happiest bride-to-be.
         </h2>
 
+        <img
+          src="/photos/JuAshSaveTheDate.png"
+          alt="Illustration of Julian and Ashley"
+          className={styles.couple}
+        />
+
         <p className={styles.saveDate}>
           Save the date, more details to follow very soon.
         </p>
@@ -161,11 +167,11 @@ export default function YesCard({ venues }: Props) {
         </div>
 
         <div className={styles.actions}>
-          <button className={styles.calBtn} onClick={addToCalendar}>
-            Add to calendar
-          </button>
           <button className={styles.waBtn} onClick={messageAshley}>
             WhatsApp Ashley your answer
+          </button>
+          <button className={styles.calBtn} onClick={addToCalendar}>
+            Add to calendar
           </button>
         </div>
 
