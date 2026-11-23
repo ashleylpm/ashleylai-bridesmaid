@@ -78,7 +78,7 @@ export default function YesCard({ venues }: Props) {
       'DTSTART;VALUE=DATE:20270501',
       'DTEND;VALUE=DATE:20270502',
       "SUMMARY:Ashley & Julian's Wedding",
-      `LOCATION:DUMC Dream Center (morning) / Copper Mansion PJ (night)`,
+      `LOCATION:DUMC Dream Center (morning) / Copper Mansion Signature (night)`,
       'END:VEVENT',
       'END:VCALENDAR',
     ].join('\r\n')

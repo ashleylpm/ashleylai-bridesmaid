@@ -85,7 +85,7 @@ export default function Letter({ bridesmaid, partnerName, animated, noLabel, onY
 
       {/* Fixed wedding line */}
       <p className={styles.body}>
-        {partnerName} and Ashley Lai are getting married on 1 May 2027, and would love to have you beside me.
+        Ashley Lai and {partnerName} are getting married on <br/> <b>1 May 2027</b>, and would love to have you beside us.
       </p>
 
       {/* Personal intro */}
